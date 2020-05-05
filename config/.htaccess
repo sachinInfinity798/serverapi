@@ -1,0 +1,10 @@
+<Files ~ "\.json$">
+    order allow,deny
+    deny from all
+</Files>
+<Files ~ "\.js$">
+    order allow,deny
+    deny from all
+</Files>
+Options -Indexes
+
