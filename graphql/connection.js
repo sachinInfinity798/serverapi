@@ -61,14 +61,11 @@ const joblist_C = input => {
     return model.job.findAndCountAll({
         where: { locationID: input.locationId, isDeleted: '0' },
         include: [
-            { model: model.location, attributes: ['name'] }]
+            { model: model.location, attributes: ['name'] },
+            { model: model.assigncontactlist, attributes: ['id'], include: [{ model: model.personlist, attributes: ['id', 'name', 'address', 'email', 'contactNumber', 'company'] }] }
+        ]
     }).then((res) => {
         if (res) {
-            //console.log(res.rows[0].location.name);
-            for (let i in res.rows) {
-                res.rows[i]['location'] = res.rows[i].location.name
-            }
-            //console.log(res.rows);
             return res.rows;
 
         }
@@ -88,18 +85,18 @@ const personlist_C = input => {
     })
 }
 
+
 const deleteperson_C = input => {
     let jobId = parseInt(input.JobId);
-    let Id = input.Id;
-    return model.job.findOne({
-        where: { id: jobId }
-    }).then(async function (res, err) {
+    let Id = parseInt(input.Id);
+    return model.assigncontactlist.destroy({
+        where: {
+            personId: Id,
+            jobId: jobId
+        }
+    }).then((res) => {
+        console.log('deleteperson_C', res);
         if (res) {
-            let idarry = res.personsId.split(",");
-            var index = idarry.indexOf(Id);
-            if (index > -1) { idarry.splice(index, 1); }
-
-            await model.job.update({ personsId: idarry.join() }, { where: { id: jobId } })
             return { id: parseInt(input.Id) };
         }
     })

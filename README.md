@@ -1,5 +1,6 @@
 # GraphQL Server api folder
-First create Mysql database with name assignment and import it fron db folder on root.
+First create Mysql database with name assignment and import it from db folder on root.
+And also change mysql username and password in development mode in config.json inside config folder
 
 # GraphQL Server user details for login
 

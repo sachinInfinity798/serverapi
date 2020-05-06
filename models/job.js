@@ -3,7 +3,6 @@
 module.exports = function (sequelize, DataTypes) {
     var job = sequelize.define('job', {
         jobType: DataTypes.STRING,
-        personsId: DataTypes.STRING,
         name: DataTypes.STRING,
         locationID: DataTypes.INTEGER,
         ETA: DataTypes.DATE,
@@ -13,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
     }, { timestamps: false });
     job.associate = function (models) {
         job.belongsTo(models.location, { foreignKey: 'locationID' });
+        job.hasMany(models.assigncontactlist, { foreignKey: 'jobId' });
     };
     return job;
 }

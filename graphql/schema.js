@@ -43,8 +43,12 @@ const typeDefs = `
   type changePassword{
     id:ID
   }
-  type Location{
-    name:String!
+  type loc{
+    name:String
+  }
+  type contactlist{
+    id:ID
+    personlist:person
   }
   input UpdateuserInput {
     id:ID!
@@ -76,13 +80,13 @@ const typeDefs = `
   }
   type Job {
     id:ID!
-    personsId: String!
     jobType:String
     name:String
     ETA:Date
     ETC:Date
     quantity:String
-    location:String
+    location:loc
+    assigncontactlists:[contactlist]
   }
   type person {
     id:ID!
