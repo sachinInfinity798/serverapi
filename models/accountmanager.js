@@ -1,12 +1,12 @@
 
 'use strict';
 module.exports = function (sequelize, DataTypes) {
-    var accountManager = sequelize.define('accountManager', {
-        name: DataTypes.STRING,
+    var accountmanager = sequelize.define('accountmanager', {
+        managername: DataTypes.STRING,
         isDeleted: DataTypes.ENUM('0', '1'),
     }, { timestamps: false });
-    accountManager.associate = function (models) {
+    accountmanager.associate = function (models) {
 
     };
-    return accountManager;
+    return accountmanager;
 }

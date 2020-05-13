@@ -60,6 +60,36 @@ const deletejob_R = (context, input, connectorQuery) => {
     return connectorQuery.apply(this, [input]);
 };
 
+const updateJob_R = (context, input, connectorQuery) => {
+    input["id"] = checkToken(context).id;
+    return connectorQuery.apply(this, [input]);
+};
+
+const clientlist_R = (context, input, connectorQuery) => {
+    input["id"] = checkToken(context).id;
+    return connectorQuery.apply(this, [input]);
+};
+
+const managerlist_R = (context, input, connectorQuery) => {
+
+    input["id"] = checkToken(context).id;
+    return connectorQuery.apply(this, [input]);
+};
+
+const updatefile_R = (context, input, connectorQuery) => {
+
+    input["id"] = checkToken(context).id;
+    return connectorQuery.apply(this, [input]);
+};
+
+const deletefile_R = (context, input, connectorQuery) => {
+    console.log('33336666');
+    input["id"] = checkToken(context).id;
+    return connectorQuery.apply(this, [input]);
+};
+
+
+
 
 module.exports = {
     authenticateUser_R,
@@ -69,5 +99,10 @@ module.exports = {
     joblist_R,
     personlist_R,
     deleteperson_R,
-    deletejob_R
+    deletejob_R,
+    updateJob_R,
+    clientlist_R,
+    managerlist_R,
+    updatefile_R,
+    deletefile_R
 };
