@@ -252,7 +252,7 @@ CREATE TABLE `clients` (
 
 INSERT INTO `clients` (`id`, `name`) VALUES
 (1, 'Client One'),
-(2, 'Client TWO'),
+(2, 'Client Two'),
 (3, 'Client Three'),
 (4, 'Client Four'),
 (5, 'Client Five'),
